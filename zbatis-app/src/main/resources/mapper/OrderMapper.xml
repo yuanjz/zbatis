@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="com.z.mapper.OrderMapper">
+
+    <resultMap id="orderMap" type="com.z.entity.Order">
+        <id column="order_id" property="orderId"/>
+        <result column="cust_id" property="custId"/>
+        <result column="cust_name" property="custName"/>
+        <result column="address" property="address"/>
+        <result column="telephone" property="telephone"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="create_time" property="createTime"/>
+        <result column="total_charge" property="totalCharge"/>
+        <result column="pre_charge" property="preCharge"/>
+        <result column="pay_status" property="payStatus"/>
+        <result column="is_valid" property="isValid"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <select id="queryById" parameterType="java.lang.Long" resultMap="orderMap">
+        select
+        o.order_id,
+        o.cust_id,
+        t.cust_name,
+        t.address,
+        t.telephone,
+        o.order_status,
+        o.create_time,
+        o.total_charge,
+        o.pre_charge,
+        o.pay_status,
+        o.is_valid,
+        o.description
+        from `order` o
+        left join cust t on o.cust_id = t.cust_id
+        where o.order_id = #{orderId}
+    </select>
+
+</mapper>

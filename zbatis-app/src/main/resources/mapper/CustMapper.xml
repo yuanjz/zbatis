@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="com.z.mapper.CustMapper">
+
+    <resultMap id="custMap" type="com.z.entity.Cust">
+        <id column="cust_id" property="custId"/>
+        <result column="cust_name" property="custName"/>
+        <result column="address" property="address"/>
+        <result column="telephone" property="telephone"/>
+    </resultMap>
+
+    <select id="queryById" parameterType="java.lang.Long" resultMap="custMap">
+        select
+          cust_id,
+          cust_name,
+          address,
+          telephone
+        from cust
+        where cust_id = #{custId}
+    </select>
+
+    <select id="queryAll" resultMap="custMap">
+        select
+          cust_id,
+          cust_name,
+          address,
+          telephone
+        from cust
+    </select>
+
+</mapper>
