@@ -12,6 +12,7 @@
         <module>zbatis</module>
         <module>zbatis-app</module>
         <module>zbatis-spring</module>
+        <module>zbatis-spring-boot</module>
     </modules>
 
     <dependencies>

@@ -9,6 +9,8 @@ import com.z.zbatis.session.DefaultSqlSessionFactory;
 import com.z.zbatis.session.SqlSession;
 import com.z.zbatis.session.SqlSessionFactory;
 import com.z.zbatis.utils.Resources;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
 
@@ -17,11 +19,16 @@ import java.util.List;
  * @Date: 2022-07-29 16:32
  * @Description:
  */
+@SpringBootApplication
 public class App {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
+    }
+
+    public static void zbatis() throws Exception {
         // 加载配置文件
-        Configuration config = Resources.loadConfig("Mybatis-Config.xml");
+        Configuration config = Resources.loadConfig("zbatis-Config.xml");
 
         // open sqlSession
         SqlSessionFactory sqlSessionFactory = new DefaultSqlSessionFactory(config);
